@@ -1,0 +1,9 @@
+# Module: lxd
+# Docs: https://www.elastic.co/guide/en/beats/metricbeat//metricbeat-module-lxd.html
+
+- module: lxd
+  metricsets: ["memory"]
+  enabled: false
+  period: 10s
+  hosts: ["localhost"]
+

@@ -1,0 +1,11 @@
+- key: lxd
+  title: "lxd"
+  description: >
+    experimental[]
+
+    lxd module
+  fields:
+    - name: lxd
+      type: group
+      description: >
+      fields:

@@ -1,0 +1,14 @@
+////
+This file is generated! See scripts/docs_collector.py
+////
+
+[options="header"]
+|===================================
+|Modules   |Dashboards   |Metricsets   
+|<<metricbeat-module-lxd,lxd>>  experimental[]   |image:./images/icon-no.png[No prebuilt dashboards]    |  
+.1+| .1+|  |<<metricbeat-metricset-lxd-memory,memory>> experimental[]  
+|================================
+
+--
+
+include::modules/lxd.asciidoc[]

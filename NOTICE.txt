@@ -1,0 +1,5 @@
+cartobeat
+Copyright 2017 Daniel Peña
+
+This product includes software developed by The Apache Software
+Foundation (http://www.apache.org/).

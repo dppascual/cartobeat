@@ -1,0 +1,39 @@
+////
+This file is generated! See scripts/docs_collector.py
+////
+
+[[metricbeat-module-lxd]]
+== lxd module
+
+experimental[]
+
+This is the lxd module.
+
+
+
+[float]
+=== Example configuration
+
+The lxd module supports the standard configuration options that are described
+in <<configuration-metricbeat>>. Here is an example configuration:
+
+[source,yaml]
+----
+cartobeat.modules:
+- module: lxd
+  metricsets: ["memory"]
+  enabled: false
+  period: 10s
+  hosts: ["localhost"]
+
+----
+
+[float]
+=== Metricsets
+
+The following metricsets are available:
+
+* <<metricbeat-metricset-lxd-memory,memory>>
+
+include::lxd/memory.asciidoc[]
+
