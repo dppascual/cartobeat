@@ -1,41 +1,45 @@
 package memory
 
 import (
+	"github.com/dppascual/cartobeat/module/lxd"
 	"github.com/elastic/beats/libbeat/common"
 	"github.com/elastic/beats/libbeat/common/cfgwarn"
 	"github.com/elastic/beats/metricbeat/mb"
+	client "github.com/lxc/lxd/client"
 )
 
-// init registers the MetricSet with the central registry as soon as the program
-// starts. The New function will be called later to instantiate an instance of
-// the MetricSet for each host defined in the module's configuration. After the
-// MetricSet has been created then Fetch will begin to be called periodically.
 func init() {
-	mb.Registry.MustAddMetricSet("lxd", "memory", New)
+	mb.Registry.MustAddMetricSet("lxd", "memory", New,
+		mb.WithHostParser(lxd.HostParser),
+		mb.DefaultMetricSet(),
+	)
 }
 
-// MetricSet holds any configuration or state information. It must implement
-// the mb.MetricSet interface. And this is best achieved by embedding
-// mb.BaseMetricSet because it implements all of the required mb.MetricSet
-// interface methods except for Fetch.
+// MetricSet stores memory metrics
 type MetricSet struct {
 	mb.BaseMetricSet
-	counter int
+	memoryService *MemoryService
+	lxdClient     client.ContainerServer
 }
 
-// New creates a new instance of the MetricSet. New is responsible for unpacking
-// any MetricSet specific configuration options if there are any.
+// New creates a new instance of the memory MetricSet
 func New(base mb.BaseMetricSet) (mb.MetricSet, error) {
 	cfgwarn.Experimental("The lxd memory metricset is experimental.")
 
-	config := struct{}{}
+	config := lxd.DefaultConfig()
 	if err := base.Module().UnpackConfig(&config); err != nil {
+		return nil, err
+	}
+
+	serverConnection, err := lxd.NewLXDClient(base.HostData().URI, config)
+	if err != nil {
 		return nil, err
 	}
 
 	return &MetricSet{
 		BaseMetricSet: base,
-		counter:       1,
+		memoryService: &MemoryService{},
+		lxdClient:     serverConnection,
 	}, nil
 }
 
