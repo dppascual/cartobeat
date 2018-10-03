@@ -18,8 +18,7 @@ func init() {
 // MetricSet stores memory metrics
 type MetricSet struct {
 	mb.BaseMetricSet
-	memoryService *MemoryService
-	lxdClient     client.ContainerServer
+	lxdClient client.ContainerServer
 }
 
 // New creates a new instance of the memory MetricSet
@@ -31,26 +30,23 @@ func New(base mb.BaseMetricSet) (mb.MetricSet, error) {
 		return nil, err
 	}
 
-	serverConnection, err := lxd.NewLXDClient(base.HostData().URI, config)
+	serverConnection, err := lxd.NewLXDClient(base.HostData().URI, config, base.Module().Config().Timeout)
 	if err != nil {
 		return nil, err
 	}
 
 	return &MetricSet{
 		BaseMetricSet: base,
-		memoryService: &MemoryService{},
 		lxdClient:     serverConnection,
 	}, nil
 }
 
-// Fetch methods implements the data gathering and data conversion to the right
-// format. It publishes the event which is then forwarded to the output. In case
-// of an error set the Error field of mb.Event or simply call report.Error().
-func (m *MetricSet) Fetch(report mb.ReporterV2) {
-	report.Event(mb.Event{
-		MetricSetFields: common.MapStr{
-			"counter": m.counter,
-		},
-	})
-	m.counter++
+// Fetch creates a list of memory events for each container.
+func (m *MetricSet) Fetch() ([]common.MapStr, error) {
+	containerStats, err := lxd.FetchStats(m.lxdClient)
+	if err != nil {
+		return nil, err
+	}
+
+	return eventsMapping(containerStats), nil
 }
