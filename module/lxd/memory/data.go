@@ -17,7 +17,9 @@ func eventsMapping(containerStats []lxd.ContainerStats) []common.MapStr {
 func eventMapping(containerStat lxd.ContainerStats) common.MapStr {
 	event := common.MapStr{
 		mb.ModuleDataKey: common.MapStr{
-			"container": containerStat.Container.Name,
+			"container": common.MapStr{
+				"name": containerStat.Container.Name,
+			},
 		},
 		"usage": common.MapStr{
 			"total": containerStat.State.Memory.Usage,
