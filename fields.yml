@@ -224,13 +224,41 @@
     - name: lxd
       type: group
       description: >
+        Information and statistics about lxd's active containers.
       fields:
         - name: memory
           type: group
           description: >
-            memory
+            Memory metrics
           fields:
-            - name: example
-              type: keyword
+        
+            - name: usage
+              type: group
               description: >
-                Example field
+                Memory usage stats.
+              fields:
+                - name: total
+                  type: long
+                  format: bytes
+                  description: >
+                    Total memory usage
+                - name: peak
+                  type: long
+                  format: bytes
+                  description: >
+                    Max memory usage
+            - name: swap
+              type: group
+              description: >
+                Swap usage stats
+              fields:
+                - name: total
+                  type: long
+                  format: bytes
+                  description: >
+                    Total swap memory usage
+                - name: peak
+                  type: long
+                  format: bytes
+                  description: >
+                    Max swap memory usage
