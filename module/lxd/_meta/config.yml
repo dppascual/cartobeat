@@ -1,6 +1,12 @@
 - module: lxd
-  metricsets: ["memory"]
-  enabled: false
+  metricsets: 
+    - "memory"
+  hosts: ["unix:///var/lib/lxd/unix.socket"]
   period: 10s
-  hosts: ["localhost"]
+  enabled: true
 
+  # To connect to LXD over TLS you must specify a client and CA certificate.
+  #ssl:
+    #certificate_authority: "/etc/pki/root/ca.pem"
+    #certificate:           "/etc/pki/client/cert.pem"
+    #key:                   "/etc/pki/client/cert.key"

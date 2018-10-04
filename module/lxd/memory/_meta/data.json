@@ -1,19 +1,28 @@
 {
-    "@timestamp":"2016-05-23T08:05:34.853Z",
-    "beat":{
-        "hostname":"beathost",
-        "name":"beathost"
+    "@timestamp": "2016-05-23T08:05:34.853Z",
+    "beat": {
+        "hostname": "host.example.com",
+        "name": "host.example.com"
     },
-    "metricset":{
-        "host":"localhost",
-        "module":"lxd",
-        "name":"memory",
-        "rtt":44269
-    },
-    "lxd":{
-        "memory":{
-            "example": "memory"
+    "lxd": {
+        "container": {
+            "name": "metricbeat_dbc-example"
+        },
+        "memory": {
+            "usage": {
+                "total": 32452,
+                "peak": 4453245
+            },
+            "swap": {
+                "total": 0,
+                "peak": 0
+            }
         }
     },
-    "type":"metricsets"
+    "metricset": {
+        "host": "/var/lib/lxd/unix.socket",
+        "module": "lxd",
+        "name": "memory",
+        "rtt": 44269
+    }
 }

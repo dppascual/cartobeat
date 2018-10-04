@@ -8,4 +8,5 @@
     - name: lxd
       type: group
       description: >
+        Information and statistics about lxd's active containers.
       fields:
