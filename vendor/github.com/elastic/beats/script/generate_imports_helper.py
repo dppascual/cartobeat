@@ -1,1 +1,0 @@
-/Users/dppascual/Repositories/golang/src/github.com/dppascual/cartobeat/vendor/github.com/elastic/beats/metricbeat/scripts/generate_imports_helper.py

@@ -1,5 +1,0 @@
-== envoyproxy module
-
-This is the envoyproxy module.
-
-The default metricset is `server`.

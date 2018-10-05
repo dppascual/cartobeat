@@ -1,2 +1,5 @@
 # Directories
 build
+vendor/*
+!vendor/vendor.json
+.vscode
