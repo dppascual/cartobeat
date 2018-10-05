@@ -56,7 +56,7 @@ func NewLXDClient(endpoint string, config Config, timeout time.Duration) (client
 
 	switch urlRaw.Scheme {
 	case "unix":
-		c, err = client.ConnectLXDUnix(endpoint, nil)
+		c, err = client.ConnectLXDUnix(urlRaw.Path, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -65,7 +65,7 @@ func NewLXDClient(endpoint string, config Config, timeout time.Duration) (client
 		if err != nil {
 			return nil, err
 		}
-		c, err = client.ConnectLXD(endpoint, connArgs)
+		c, err = client.ConnectLXD(urlRaw.Path, connArgs)
 		if err != nil {
 			return nil, err
 		}
@@ -103,7 +103,7 @@ func FetchStats(serverConnection client.ContainerServer) ([]ContainerStats, erro
 	}()
 
 	for stat := range statsQueue {
-		if stat.Container.IsActive() {
+		if stat.Container.IsActive() && stat.State != nil {
 			containersList = append(containersList, stat)
 		}
 	}
