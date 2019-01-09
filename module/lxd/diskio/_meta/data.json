@@ -1,0 +1,26 @@
+{
+    "@timestamp": "2016-05-23T08:05:34.853Z",
+    "beat": {
+        "hostname": "host.example.com",
+        "name": "host.example.com"
+    },
+    "lxd": {
+        "container": {
+            "name": "metricbeat_dbc-example"
+        },
+        "diskio": {
+            "root": {
+                "usage": 390940590.08
+            },
+            "mnt": {
+                "usage": 13893632.00
+            }
+        }
+    },
+    "metricset": {
+        "host": "/var/lib/lxd/unix.socket",
+        "module": "lxd",
+        "name": "diskio",
+        "rtt": 155
+    }
+}

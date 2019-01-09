@@ -1,0 +1,17 @@
+- name: diskio
+  type: group
+  description: >
+    Disk IO metrics
+  fields:
+
+    - name: name
+      type: keyword
+      example: root
+      description: >
+        The disk name
+    - name: usage
+      type: long
+      format: bytes
+      description: >
+        Disk usage stats
+
