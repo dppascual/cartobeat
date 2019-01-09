@@ -1,0 +1,11 @@
+- name: cpu
+  type: group
+  description: >
+    CPU metrics
+  fields:
+
+    - name: usage
+      type: long
+      description: >
+        CPU usage in seconds
+
