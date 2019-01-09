@@ -15,9 +15,10 @@ import (
 
 var Name = "cartobeat"
 var IndexPrefix = "cartobeat"
+var Version = "0.2.0"
 
 func main() {
-	if err := instance.Run(Name, IndexPrefix, "", beater.DefaultCreator()); err != nil {
+	if err := instance.Run(Name, IndexPrefix, Version, beater.DefaultCreator()); err != nil {
 		os.Exit(1)
 	}
 }
