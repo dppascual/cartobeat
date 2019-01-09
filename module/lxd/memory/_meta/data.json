@@ -23,6 +23,6 @@
         "host": "/var/lib/lxd/unix.socket",
         "module": "lxd",
         "name": "memory",
-        "rtt": 44269
+        "rtt": 155
     }
 }
