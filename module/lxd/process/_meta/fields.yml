@@ -1,0 +1,10 @@
+- name: process
+  type: group
+  description: >
+    Process metrics
+  fields:
+
+    - name: processes
+      type: long
+      description: >
+        Number of processes running on the container
