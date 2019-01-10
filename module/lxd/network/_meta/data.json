@@ -1,0 +1,29 @@
+{
+    "@timestamp": "2016-05-23T08:05:34.853Z",
+    "beat": {
+        "hostname": "host.example.com",
+        "name": "host.example.com"
+    },
+    "lxd": {
+        "container": {
+            "name": "metricbeat_dbc-example"
+        },
+        "network": {
+            "interface": "eth0",
+            "inbound": {
+               "bytes": 1836098519.04,
+               "packets": 4987213
+            },
+            "outbound": {
+                "bytes": 38976828211.20,
+                "packets": 13450518
+            }
+        }
+    },
+    "metricset": {
+        "host": "/var/lib/lxd/unix.socket",
+        "module": "lxd",
+        "name": "network",
+        "rtt": 155
+    }
+}

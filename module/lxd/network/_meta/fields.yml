@@ -1,0 +1,39 @@
+- name: network
+  type: group
+  description: >
+    Network metrics
+  fields:
+
+    - name: interface
+      type: keywork
+      example: "eth0"
+      description: >
+        Network interface name
+    - name: inbound
+      type: group
+      description: >
+        Incoming network stats
+      fields:
+        - name: bytes
+          type: long
+          format: bytes
+          description: >
+            Total number of incoming bytes
+        - name: packets
+          type: long
+          description: >
+            Total number of incoming packets
+    - name: outbound
+      type: group
+      description: >
+        Outgoing network stats
+      fields:
+        - name: bytes
+          type: long
+          format: bytes
+          description: >
+            Total number of outgoing bytes
+        - name: packets
+          type: long
+          description: >
+            Total number of outgoing packets
