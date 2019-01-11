@@ -9,12 +9,8 @@
             "name": "metricbeat_dbc-example"
         },
         "diskio": {
-            "root": {
-                "usage": 390940590.08
-            },
-            "mnt": {
-                "usage": 13893632.00
-            }
+            "name": "root",
+            "usage": 390940590.08
         }
     },
     "metricset": {
