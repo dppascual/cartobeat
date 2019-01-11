@@ -1,0 +1,1 @@
+The LXD `info` metricset collects system-wide information based on the https://github.com/lxc/lxd/blob/master/doc/rest-api.md#10containersnamestate[LXD API]

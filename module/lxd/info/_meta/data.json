@@ -1,0 +1,22 @@
+{
+    "@timestamp": "2016-05-23T08:05:34.853Z",
+    "beat": {
+        "hostname": "host.example.com",
+        "name": "host.example.com"
+    },
+    "lxd": {
+        "info": {
+            "containers": {
+                "running": 10,
+                "stopped": 1,
+                "total": 11
+            }
+        }
+    },
+    "metricset": {
+        "host": "/var/lib/lxd/unix.socket",
+        "module": "lxd",
+        "name": "info",
+        "rtt": 155
+    }
+}

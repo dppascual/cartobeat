@@ -1,0 +1,22 @@
+- name: info
+  type: group
+  description: >
+    Info metrics based on https://github.com/lxc/lxd/blob/master/doc/rest-api.md#10containersname
+  fields:
+    - name: containers
+      type: group
+      description: >
+        Overall container stats.
+      fields:
+        - name: running
+          type: long
+          description: >
+            Total number of running containers
+        - name: stopped
+          type: long
+          description: >
+            Total number of stopped containers
+        - name: total
+          type: long
+          description: >
+            Total number of existing containers
