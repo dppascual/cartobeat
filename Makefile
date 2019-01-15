@@ -18,6 +18,7 @@ setup: copy-vendor git-init create-metricset collect git-add
 # Copy beats into vendor directory
 .PHONY: copy-vendor
 copy-vendor:
+	cd ${GOPATH}/src/github.com/elastic/beats && git checkout v6.4.2 > /dev/null 2>&1 && cd -
 	mkdir -p vendor/github.com/elastic
 	cp -R ${GOPATH}/src/github.com/elastic/beats vendor/github.com/elastic/
 	ln -sf ${PWD}/vendor/github.com/elastic/beats/metricbeat/scripts/generate_imports_helper.py ${PWD}/vendor/github.com/elastic/beats/script/generate_imports_helper.py
