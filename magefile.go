@@ -32,7 +32,7 @@ import (
 func init() {
 	mage.SetBuildVariableSources(mage.DefaultBeatBuildVariableSources)
 
-	mage.BeatDescription = "One sentence description of the Beat."
+	mage.BeatDescription = "Cartobeat service"
 }
 
 // Build builds the Beat binary.
