@@ -4,17 +4,18 @@ import (
 	"github.com/dppascual/cartobeat/module/lxd"
 	"github.com/elastic/beats/libbeat/common"
 	"github.com/elastic/beats/metricbeat/mb"
+	"github.com/lxc/lxd/shared/api"
 )
 
 func eventsMapping(containerStats []lxd.ContainerStats) []common.MapStr {
-	var containersRunning int
-	var containersStopped int
+	containers := map[api.StatusCode]int{
+		102: 0,
+		103: 0,
+	}
 
 	for _, containerStat := range containerStats {
-		if containerStat.State.StatusCode == 103 {
-			containersRunning += 1
-		} else if containerStat.State.StatusCode == 102 {
-			containersStopped += 1
+		if _, ok := containers[containerStat.State.StatusCode]; ok {
+			containers[containerStat.State.StatusCode] += 1
 		}
 	}
 
@@ -22,9 +23,9 @@ func eventsMapping(containerStats []lxd.ContainerStats) []common.MapStr {
 		common.MapStr{
 			mb.ModuleDataKey: common.MapStr{
 				"containers": common.MapStr{
-					"running": containersRunning,
-					"stopped": containersStopped,
-					"total":   containersRunning + containersStopped,
+					"running": containers[103],
+					"stopped": containers[102],
+					"total":   containers[102] + containers[103],
 				},
 			},
 		},
