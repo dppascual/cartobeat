@@ -43,7 +43,7 @@ func New(base mb.BaseMetricSet) (mb.MetricSet, error) {
 
 // Fetch creates a list of info events for each container.
 func (m *MetricSet) Fetch() ([]common.MapStr, error) {
-	containerStats, err := lxd.FetchStats(m.lxdClient)
+	containerStats, err := lxd.FetchInfo(m.lxdClient)
 	if err != nil {
 		return nil, err
 	}
