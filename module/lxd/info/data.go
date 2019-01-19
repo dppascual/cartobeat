@@ -14,8 +14,8 @@ func eventsMapping(containerStats []lxd.ContainerStats) []common.MapStr {
 	}
 
 	for _, containerStat := range containerStats {
-		if _, ok := containers[containerStat.State.StatusCode]; ok {
-			containers[containerStat.State.StatusCode] += 1
+		if _, ok := containers[containerStat.Container.StatusCode]; ok {
+			containers[containerStat.Container.StatusCode] += 1
 		}
 	}
 
