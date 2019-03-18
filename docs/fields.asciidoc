@@ -441,6 +441,98 @@ Information and statistics about lxd's active containers.
 
 
 [float]
+== cpu fields
+
+CPU metrics
+
+
+
+*`lxd.cpu.usage`*::
++
+--
+type: long
+
+CPU usage in seconds
+
+
+--
+
+[float]
+== diskio fields
+
+Disk IO metrics
+
+
+
+*`lxd.diskio.name`*::
++
+--
+type: keyword
+
+example: root
+
+The disk name
+
+
+--
+
+*`lxd.diskio.usage`*::
++
+--
+type: long
+
+format: bytes
+
+Disk usage stats
+
+
+--
+
+[float]
+== info fields
+
+Info metrics based on https://github.com/lxc/lxd/blob/master/doc/rest-api.md#10containersname
+
+
+
+[float]
+== containers fields
+
+Overall container stats.
+
+
+
+*`lxd.info.containers.running`*::
++
+--
+type: long
+
+Total number of running containers
+
+
+--
+
+*`lxd.info.containers.stopped`*::
++
+--
+type: long
+
+Total number of stopped containers
+
+
+--
+
+*`lxd.info.containers.total`*::
++
+--
+type: long
+
+Total number of existing containers
+
+
+--
+
+[float]
 == memory fields
 
 Memory metrics
@@ -505,6 +597,100 @@ type: long
 format: bytes
 
 Max swap memory usage
+
+
+--
+
+[float]
+== network fields
+
+Network metrics
+
+
+
+*`lxd.network.interface`*::
++
+--
+type: keywork
+
+example: eth0
+
+Network interface name
+
+
+--
+
+[float]
+== inbound fields
+
+Incoming network stats
+
+
+
+*`lxd.network.inbound.bytes`*::
++
+--
+type: long
+
+format: bytes
+
+Total number of incoming bytes
+
+
+--
+
+*`lxd.network.inbound.packets`*::
++
+--
+type: long
+
+Total number of incoming packets
+
+
+--
+
+[float]
+== outbound fields
+
+Outgoing network stats
+
+
+
+*`lxd.network.outbound.bytes`*::
++
+--
+type: long
+
+format: bytes
+
+Total number of outgoing bytes
+
+
+--
+
+*`lxd.network.outbound.packets`*::
++
+--
+type: long
+
+Total number of outgoing packets
+
+
+--
+
+[float]
+== process fields
+
+Process metrics
+
+
+
+*`lxd.process.processes`*::
++
+--
+type: long
+
+Number of processes running on the container
 
 
 --

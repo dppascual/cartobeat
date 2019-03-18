@@ -21,7 +21,7 @@ func eventMapping(containerStat lxd.ContainerStats) common.MapStr {
 				"name": containerStat.Container.Name,
 			},
 		},
-		"usage": containerStat.State.CPU.Usage,
+		"usage": containerStat.State.CPU.Usage/1000000000,
 	}
 	return event
 }

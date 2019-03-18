@@ -76,28 +76,9 @@ func NewLXDClient(endpoint string, config Config, timeout time.Duration) (client
 	return c, nil
 }
 
-// FetchStats returns a list of active containers with all related stats inside
-func FetchStats(serverConnection client.ContainerServer) ([]ContainerStats, error) {
-
-	containersList, err := FetchInfo(serverConnection)
-	if err != nil {
-		return nil, err
-	}
-
-	// Declare a new slice to store active containers
-	containersActive := make([]ContainerStats, 0, len(containersList))
-
-	for _, stat := range containersList {
-		if stat.Container.IsActive() && stat.State != nil {
-			containersActive = append(containersActive, stat)
-		}
-	}
-
-	return containersActive, nil
-}
-
-// FetchInfo returns a list of all containers with all related stats inside
-func FetchInfo(serverConnection client.ContainerServer) ([]ContainerStats, error) {
+// FetchStats returns a list of containers with all related stats inside. A flag in the signature specifies
+// if all containers has to be returned or just running containers.
+func FetchStats(serverConnection client.ContainerServer, allContainers bool) ([]ContainerStats, error) {
 
 	containers, err := serverConnection.GetContainers()
 	if err != nil {
@@ -126,5 +107,18 @@ func FetchInfo(serverConnection client.ContainerServer) ([]ContainerStats, error
 		containersList = append(containersList, stat)
 	}
 
-	return containersList, nil
+	if allContainers {
+		return containersList, nil
+	}
+
+	// Declare a new slice to store active containers
+	containersActive := make([]ContainerStats, 0, len(containersList))
+
+	for _, stat := range containersList {
+		if stat.Container.IsActive() && stat.State != nil {
+			containersActive = append(containersActive, stat)
+		}
+	}
+
+	return containersActive, nil
 }

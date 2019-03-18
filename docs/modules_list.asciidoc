@@ -6,7 +6,12 @@ This file is generated! See scripts/docs_collector.py
 |===================================
 |Modules   |Dashboards   |Metricsets   
 |<<metricbeat-module-lxd,lxd>>  experimental[]   |image:./images/icon-no.png[No prebuilt dashboards]    |  
-.1+| .1+|  |<<metricbeat-metricset-lxd-memory,memory>> experimental[]  
+.6+| .6+|  |<<metricbeat-metricset-lxd-cpu,cpu>> experimental[]  
+|<<metricbeat-metricset-lxd-diskio,diskio>> experimental[]  
+|<<metricbeat-metricset-lxd-info,info>> experimental[]  
+|<<metricbeat-metricset-lxd-memory,memory>> experimental[]  
+|<<metricbeat-metricset-lxd-network,network>> experimental[]  
+|<<metricbeat-metricset-lxd-process,process>> experimental[]  
 |================================
 
 --

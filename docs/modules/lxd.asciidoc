@@ -23,6 +23,11 @@ cartobeat.modules:
 - module: lxd
   metricsets: 
     - "memory"
+    - "cpu"
+    - "diskio"
+    - "info"
+    - "network"
+    - "process"
   hosts: ["unix:///var/lib/lxd/unix.socket"]
   period: 10s
   enabled: true
@@ -39,7 +44,27 @@ cartobeat.modules:
 
 The following metricsets are available:
 
+* <<metricbeat-metricset-lxd-cpu,cpu>>
+
+* <<metricbeat-metricset-lxd-diskio,diskio>>
+
+* <<metricbeat-metricset-lxd-info,info>>
+
 * <<metricbeat-metricset-lxd-memory,memory>>
 
+* <<metricbeat-metricset-lxd-network,network>>
+
+* <<metricbeat-metricset-lxd-process,process>>
+
+include::lxd/cpu.asciidoc[]
+
+include::lxd/diskio.asciidoc[]
+
+include::lxd/info.asciidoc[]
+
 include::lxd/memory.asciidoc[]
+
+include::lxd/network.asciidoc[]
+
+include::lxd/process.asciidoc[]
 

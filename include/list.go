@@ -27,5 +27,10 @@ package include
 
 import (
 	_ "github.com/dppascual/cartobeat/module/lxd"
+	_ "github.com/dppascual/cartobeat/module/lxd/cpu"
+	_ "github.com/dppascual/cartobeat/module/lxd/diskio"
+	_ "github.com/dppascual/cartobeat/module/lxd/info"
 	_ "github.com/dppascual/cartobeat/module/lxd/memory"
+	_ "github.com/dppascual/cartobeat/module/lxd/network"
+	_ "github.com/dppascual/cartobeat/module/lxd/process"
 )

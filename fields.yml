@@ -226,6 +226,56 @@
       description: >
         Information and statistics about lxd's active containers.
       fields:
+        - name: cpu
+          type: group
+          description: >
+            CPU metrics
+          fields:
+        
+            - name: usage
+              type: long
+              description: >
+                CPU usage in seconds
+        
+        - name: diskio
+          type: group
+          description: >
+            Disk IO metrics
+          fields:
+        
+            - name: name
+              type: keyword
+              example: root
+              description: >
+                The disk name
+            - name: usage
+              type: long
+              format: bytes
+              description: >
+                Disk usage stats
+        
+        - name: info
+          type: group
+          description: >
+            Info metrics based on https://github.com/lxc/lxd/blob/master/doc/rest-api.md#10containersname
+          fields:
+            - name: containers
+              type: group
+              description: >
+                Overall container stats.
+              fields:
+                - name: running
+                  type: long
+                  description: >
+                    Total number of running containers
+                - name: stopped
+                  type: long
+                  description: >
+                    Total number of stopped containers
+                - name: total
+                  type: long
+                  description: >
+                    Total number of existing containers
         - name: memory
           type: group
           description: >
@@ -262,3 +312,52 @@
                   format: bytes
                   description: >
                     Max swap memory usage
+        - name: network
+          type: group
+          description: >
+            Network metrics
+          fields:
+        
+            - name: interface
+              type: keywork
+              example: "eth0"
+              description: >
+                Network interface name
+            - name: inbound
+              type: group
+              description: >
+                Incoming network stats
+              fields:
+                - name: bytes
+                  type: long
+                  format: bytes
+                  description: >
+                    Total number of incoming bytes
+                - name: packets
+                  type: long
+                  description: >
+                    Total number of incoming packets
+            - name: outbound
+              type: group
+              description: >
+                Outgoing network stats
+              fields:
+                - name: bytes
+                  type: long
+                  format: bytes
+                  description: >
+                    Total number of outgoing bytes
+                - name: packets
+                  type: long
+                  description: >
+                    Total number of outgoing packets
+        - name: process
+          type: group
+          description: >
+            Process metrics
+          fields:
+        
+            - name: processes
+              type: long
+              description: >
+                Number of processes running on the container

@@ -4,6 +4,11 @@
 - module: lxd
   metricsets: 
     - "memory"
+    - "cpu"
+    - "diskio"
+    - "info"
+    - "network"
+    - "process"
   hosts: ["unix:///var/lib/lxd/unix.socket"]
   period: 10s
   enabled: true
